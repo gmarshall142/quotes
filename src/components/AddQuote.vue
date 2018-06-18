@@ -46,6 +46,16 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
+        const quote = {
+          quote_string: this.quoteString,
+          author_first_name: this.firstName,
+          author_last_name: this.lastName,
+          source: this.source,
+        };
+        this.$store.dispatch('addQuote', quote);
+        this.$refs.form.reset();
+        this.$router.push({ name: 'Home'});
+        /*
         return axios({
           method: 'post',
           data: {
@@ -65,6 +75,7 @@ export default {
           })
           .catch(() => {
           });
+          */
       }
       return true;
     },

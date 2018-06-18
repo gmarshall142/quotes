@@ -28,14 +28,15 @@ import axios from 'axios';
 
 export default {
   name: 'Quotes',
-  data() {
-    return {
-      quotes: [],
-    };
+  computed: {
+    quotes() {
+      return this.$store.getters.fetchQuotes;
+    },
   },
   mounted() {
-    this.fetchQuotes();
+    this.$store.dispatch('fetchQuotes');
   },
+  /*
   methods: {
     async fetchQuotes() {
       return axios({
@@ -49,5 +50,6 @@ export default {
         });
     },
   },
+  */
 };
 </script>
