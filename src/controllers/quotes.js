@@ -23,13 +23,6 @@ module.exports.controller = (app) => {
 
   // add a new quote
   app.post('/quotes', (req, res) => {
-    console.log('=====> /quotes');
-    /*
-          name: req.body.name,
-          description: req.body.description,
-          release_year: req.body.release_year,
-          genre: req.body.genre,
-    */
     if (!req.body.quote_string) {
       res.status(400);
       res.send('Quote is required');

@@ -55,27 +55,6 @@ export default {
         this.$store.dispatch('addQuote', quote);
         this.$refs.form.reset();
         this.$router.push({ name: 'Home'});
-        /*
-        return axios({
-          method: 'post',
-          data: {
-            quote_string: this.quoteString,
-            author_first_name: this.firstName,
-            author_last_name: this.lastName,
-            source: this.source,
-          },
-          url: 'http://localhost:3000/quotes',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-          .then(() => {
-            this.$router.push({ name: 'Home' });
-            this.$refs.form.reset();
-          })
-          .catch(() => {
-          });
-          */
       }
       return true;
     },
