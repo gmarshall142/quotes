@@ -29,7 +29,7 @@
         <v-toolbar-title>Home</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn flat v-bind:to="{ name: 'AddQuote' }">Add Quote</v-btn>
+          <v-btn flat @click.stop="editDialog">Add Quote</v-btn>
         </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -53,6 +53,12 @@ export default {
   }),
   props: {
     source: String,
+  },
+  methods: {
+    editDialog() {
+      //const value = !this.$store.getters.getEditDialog;
+      this.$store.dispatch('editDialog', true);
+    },
   },
 };
 </script>

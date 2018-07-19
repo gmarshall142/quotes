@@ -44,4 +44,35 @@ module.exports.controller = (app) => {
       });
     }
   });
+
+  // update a new quote
+  app.put('/quotes/:quoteId', (req, res) => {
+    if (!req.body.quote_string) {
+      res.status(400);
+      res.send('Quote is required');
+    } else {
+      console.log('put');
+      const newQuote = new QuoteSchema({
+        _id: req.params.quoteId,
+        version: req.body.version,
+        author_first_name: req.body.author_first_name,
+        author_last_name: req.body.author_last_name,
+        category: req.body.category,
+        comment: req.body.comment,
+        graphic_url: req.body.graphic_url,
+        quote_format: req.body.quote_format,
+        quote_string: req.body.quote_string,
+        source: req.body.source,
+      });
+      newQuote.isNew = false;
+
+      newQuote.save((err) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.json(newQuote);
+        }
+      });
+    }
+  });
 };
